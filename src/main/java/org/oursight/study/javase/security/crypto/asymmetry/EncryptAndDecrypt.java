@@ -25,12 +25,14 @@ public class EncryptAndDecrypt {
 		PublicKey publicKey = keyPair.getPublic();
 		PrivateKey privateKey = keyPair.getPrivate();
 
+		// encrypt
 		Cipher cipher = Cipher.getInstance("RSA");
 		cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 		byte[] resultBytes = cipher.doFinal(plainText.getBytes());
 		String result = SecurityUtil.byteArrayToHex(resultBytes);
 		System.out.println("encrypted result: " + result);
 		
+		// decrypt
 		cipher.init(Cipher.DECRYPT_MODE, privateKey);
 		byte[] decryptedResult = cipher.doFinal(resultBytes);
 		System.out.println("decrypted result: " + new String(decryptedResult));
