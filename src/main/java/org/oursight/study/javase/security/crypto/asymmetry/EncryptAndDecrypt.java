@@ -14,9 +14,6 @@ public class EncryptAndDecrypt {
 	public static final String KEY_ALGORITHM = "RSA";
 	public static final String SIGNATURE_ALGORITHM = "MD5withRSA";
 
-	private static final String PUBLIC_KEY = "RSAPublicKey";
-	private static final String PRIVATE_KEY = "RSAPrivateKey";
-
 	public static void main(String[] args) throws Exception {
 		String plainText = "11111111";
 
