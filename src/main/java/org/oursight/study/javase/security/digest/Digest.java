@@ -5,10 +5,10 @@ import java.security.NoSuchAlgorithmException;
 
 public class Digest {
 
-	public static String md5(String origin) {
+	public static String digest(String origin, String algorithm) {
 		MessageDigest digest = null;
 		try {
-			digest = MessageDigest.getInstance("MD5");
+			digest = MessageDigest.getInstance(algorithm);
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e.getMessage());
 		}
@@ -17,8 +17,6 @@ public class Digest {
 		return byteArrayToHex(bytes);
 
 	}
-	
-	
 
 	public static String byteArrayToHex(byte[] byteArray) {
 		// 首先初始化一个字符数组，用来存放每个16进制字符
@@ -40,7 +38,12 @@ public class Digest {
 	}
 	
 	public static void main(String[] args) {
-	    System.out.println(md5("1111"));
+		String origin = "1111";
+	    System.out.println("MD5: "+ digest(origin,"MD5"));
+	    System.out.println("SHA: "+ digest(origin,"SHA"));
+	    System.out.println("SHA-256: "+ digest(origin,"SHA-256"));
+	    System.out.println("SHA-384: "+ digest(origin,"SHA-384"));
+	    System.out.println("SHA-512: "+ digest(origin,"SHA-512"));
     }
 
 }
